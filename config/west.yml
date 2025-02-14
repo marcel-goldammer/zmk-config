@@ -47,6 +47,12 @@ manifest:
     - name: zmk-tri-state
       path: modules/zmk/tri-state
 
+    - name: zmk-locales
+      url: https://github.com/joelspadin/zmk-locales
+      revision: main
+      path: modules/zmk-locales
+
+
     # Temporarily overload Zephyr until
     # https://github.com/zmkfirmware/zephyr/pull/40 is merged.
     - name: zephyr
