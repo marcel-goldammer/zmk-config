@@ -11,6 +11,8 @@
 #include "zmk-helpers/key-labels/lily58.h"
 #include "zmk-helpers/unicode-chars/german.dtsi"
 
+#include "custom_numbers.h"
+
 #define ___ &trans
 
 // left hand keys
@@ -26,7 +28,7 @@
 #define NAV             2
 #define DEUTSCH_QWERTY  3
 
-ZMK_BEHAVIOR(mo_to, hold_tap,
+ZMK_HOLD_TAP(mo_to,
     flavor = "balanced";
     tapping-term-ms = <200>;
     bindings = <&mo>, <&to>;
@@ -35,7 +37,7 @@ ZMK_BEHAVIOR(mo_to, hold_tap,
 #define MO_TO(layer) &mo_to layer layer
 
 // left-hand HRMs
-ZMK_BEHAVIOR(hml, hold_tap,
+ZMK_HOLD_TAP(hml,
     flavor = "balanced";
     tapping-term-ms = <280>;
     quick-tap-ms = <175>;                // repeat on tap-into-hold
@@ -46,7 +48,7 @@ ZMK_BEHAVIOR(hml, hold_tap,
 )
 
 // right-hand HRMs
-ZMK_BEHAVIOR(hmr, hold_tap,
+ZMK_HOLD_TAP(hmr,
     flavor = "balanced";
     tapping-term-ms = <280>;
     quick-tap-ms = <175>;                // repeat on tap-into-hold
@@ -55,6 +57,15 @@ ZMK_BEHAVIOR(hmr, hold_tap,
     hold-trigger-key-positions = <KEYS_L THUMBS>;
     hold-trigger-on-release;             // delay p ositional check until key-release
 )
+
+// tap: backspace | shift + tap: delete
+ZMK_MOD_MORPH(bspc_del,
+     bindings = <&kp BSPC>, <&kp DEL>
+     mods = <(MOD_LSFT|MOD_RSFT)>
+)
+
+// custom numbers
+ZMK_MOD_MORPH
 
 #define HRM_CTRL_A &hml LCTRL DE_A
 #define HRM_ALT_S &hml LALT DE_S
@@ -68,7 +79,7 @@ ZMK_BEHAVIOR(hmr, hold_tap,
 #define HRM_CTRL_SEMI &hmr LCTRL DE_SEMI
 ZMK_LAYER(qwerty,
     // ╭────────────────┬────────────────┬────────────────┬────────────────┬────────────────┬────────────────┬────────────────╮╭────────────────┬────────────────┬────────────────┬────────────────┬────────────────┬────────────────┬────────────────╮
-         &kp ESC          &kp DE_N1        &kp DE_N2        &kp DE_N3        &kp DE_N4        &kp DE_N5                                           &kp DE_N6        &kp DE_N7        &kp DE_N8        &kp DE_N9        &kp DE_N0        &kp DE_EQUAL
+         &kp ESC          &cn1             &cn2             &cn3             &cn4             &cn5                                                &cn6             &cn7             &cn8             &cn9             &cn0             &kp DE_EQUAL
     // ├────────────────┼────────────────┼────────────────┼────────────────┼────────────────┤────────────────┤────────────────┤├────────────────┼────────────────┼────────────────┼────────────────┼────────────────┤────────────────┤────────────────┤
          &kp TAB          &kp DE_Q         &kp DE_W         &kp DE_E         &kp DE_R         &kp DE_T                                            &kp DE_Y         &kp DE_U         &kp DE_I         &kp DE_O         &kp DE_P         &kp DE_MINUS
     // ├────────────────┼────────────────┼────────────────┼────────────────┼────────────────┤────────────────┤────────────────┤├────────────────┼────────────────┼────────────────┼────────────────┼────────────────┤────────────────┤────────────────┤
@@ -76,7 +87,7 @@ ZMK_LAYER(qwerty,
     // ├────────────────┼────────────────┼────────────────┼────────────────┼────────────────┤────────────────┤────────────────┤├────────────────┼────────────────┼────────────────┼────────────────┼────────────────┤────────────────┤────────────────┤
          &kp LSHFT        &kp DE_Z         &kp DE_X         &kp DE_C         &kp DE_V         &kp DE_B         &kp DE_LBKT       &kp DE_RBKT      &kp DE_N         &kp DE_M         &kp DE_COMMA     &kp DE_DOT       &kp DE_FSLH      &kp RSHIFT
     // ├────────────────┼────────────────┼────────────────┼────────────────┼────────────────┤────────────────┤────────────────┤├────────────────┼────────────────┼────────────────┼────────────────┼────────────────┤────────────────┤────────────────┤
-                                                            &kp LALT         &kp LGUI         MO_TO(NAV)       &kp SPACE         &kp ENTER        MO_TO(SYM_NUM)   &kp BSPC         &lt DEUTSCH_QWERTY RGUI
+                                                            &kp LALT         &kp LGUI         MO_TO(NAV)       &kp SPACE         &kp ENTER        MO_TO(SYM_NUM)   &bspc_del        &lt DEUTSCH_QWERTY RGUI
     //                                                    ╰────────────────┴────────────────┴────────────────┴────────────────╯╰────────────────┴────────────────┴────────────────┴────────────────╯
 )
 
@@ -84,11 +95,11 @@ ZMK_LAYER(sym_num,
     // ╭────────────────┬────────────────┬────────────────┬────────────────┬────────────────┬────────────────┬────────────────╮╭────────────────┬────────────────┬────────────────┬────────────────┬────────────────┬────────────────┬────────────────╮
          ___              &kp F1           &kp F2           &kp F3           &kp F4           &kp F5                                              &kp F6           &kp F7           &kp F8           &kp F9           &kp F10          &kp F11      
     // ├────────────────┼────────────────┼────────────────┼────────────────┼────────────────┤────────────────┤────────────────┤├────────────────┼────────────────┼────────────────┼────────────────┼────────────────┤────────────────┤────────────────┤
-         ___              &kp DE_EXCL      &kp DE_LT        &kp DE_FSLH      &kp DE_GT        &kp DE_UNDER                                        &kp DE_EQUAL     &kp DE_N7        &kp DE_N8        &kp DE_N9        &kp DE_PLUS      &kp F12
+         ___              &kp DE_EXCL      &kp DE_LT        &kp DE_FSLH      &kp DE_GT        &kp DE_UNDER                                        &kp DE_EQUAL     &cn7             &cn8             &cn9             &kp DE_PLUS      &kp F12
     // ├────────────────┼────────────────┼────────────────┼────────────────┼────────────────┤────────────────┤────────────────┤├────────────────┼────────────────┼────────────────┼────────────────┼────────────────┤────────────────┤────────────────┤
-         ___              &kp DE_LPAR      &kp DE_SQT       &kp DE_DQT       &kp DE_RPAR      &kp DE_MINUS                                        &kp DE_STAR      &kp DE_N4        &kp DE_N5        &kp DE_N6        &kp DE_MINUS     ___
+         ___              &kp DE_LPAR      &kp DE_SQT       &kp DE_DQT       &kp DE_RPAR      &kp DE_MINUS                                        &kp DE_STAR      &cn4             &cn5             &cn6             &kp DE_MINUS     ___
     // ├────────────────┼────────────────┼────────────────┼────────────────┼────────────────┤────────────────┤────────────────┤├────────────────┼────────────────┼────────────────┼────────────────┼────────────────┤────────────────┤────────────────┤
-         ___              &kp DE_GRAVE     &kp DE_PIPE      &kp DE_BSLH      ___              ___              &to QWERTY        &to QWERTY       &kp DE_N0        &kp DE_N1        &kp DE_N2        &kp DE_N3        &kp DE_FSLH      ___
+         ___              &kp DE_GRAVE     &kp DE_PIPE      &kp DE_BSLH      ___              ___              &to QWERTY        &to QWERTY       &cn0             &cn1             &cn2             &cn3             &kp DE_FSLH      ___
     // ├────────────────┼────────────────┼────────────────┼────────────────┼────────────────┤────────────────┤────────────────┤├────────────────┼────────────────┼────────────────┼────────────────┼────────────────┤────────────────┤────────────────┤
                                                             ___              ___              MO_TO(NAV)       ___               ___              &to QWERTY       ___              ___
     //                                                    ╰────────────────┴────────────────┴────────────────┴────────────────╯╰────────────────┴────────────────┴────────────────┴────────────────╯
