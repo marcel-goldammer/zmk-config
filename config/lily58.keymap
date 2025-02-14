@@ -64,9 +64,6 @@ ZMK_MOD_MORPH(bspc_del,
      mods = <(MOD_LSFT|MOD_RSFT)>;
 )
 
-// custom numbers
-ZMK_MOD_MORPH
-
 #define HRM_CTRL_A &hml LCTRL DE_A
 #define HRM_ALT_S &hml LALT DE_S
 #define HRM_GUI_D &hml LGUI DE_D
