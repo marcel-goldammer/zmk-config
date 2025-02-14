@@ -56,15 +56,23 @@ ZMK_BEHAVIOR(hmr, hold_tap,
     hold-trigger-on-release;             // delay p ositional check until key-release
 )
 
+#define HRM_CTRL_A &hml LCTRL DE_A
+#define HRM_ALT_S &hml LALT DE_S
+#define HRM_GUI_D &hml LGUI DE_D
+#define HRM_SHIFT_F &hml LSHIFT DE_F
 #define HRM_DQ_G &lt DEUTSCH_QWERTY DE_G
 #define HRM_DQ_H &lt DEUTSCH_QWERTY DE_H
+#define HRM_SHIFT_J &hmr RSHIFT DE_J
+#define HRM_GUI_K &hmr LGUI DE_K
+#define HRM_ALT_L &hmr LALT DE_L
+#define HRM_CTRL_SEMI &hmr LCTRL DE_SEMI
 ZMK_LAYER(qwerty,
     // ╭────────────────┬────────────────┬────────────────┬────────────────┬────────────────┬────────────────┬────────────────╮╭────────────────┬────────────────┬────────────────┬────────────────┬────────────────┬────────────────┬────────────────╮
          &kp ESC          &kp DE_N1        &kp DE_N2        &kp DE_N3        &kp DE_N4        &kp DE_N5                                           &kp DE_N6        &kp DE_N7        &kp DE_N8        &kp DE_N9        &kp DE_N0        &kp DE_EQUAL
     // ├────────────────┼────────────────┼────────────────┼────────────────┼────────────────┤────────────────┤────────────────┤├────────────────┼────────────────┼────────────────┼────────────────┼────────────────┤────────────────┤────────────────┤
          &kp TAB          &kp DE_Q         &kp DE_W         &kp DE_E         &kp DE_R         &kp DE_T                                            &kp DE_Y         &kp DE_U         &kp DE_I         &kp DE_O         &kp DE_P         &kp DE_MINUS
     // ├────────────────┼────────────────┼────────────────┼────────────────┼────────────────┤────────────────┤────────────────┤├────────────────┼────────────────┼────────────────┼────────────────┼────────────────┤────────────────┤────────────────┤
-         &kp LCTRL        &hml LCTRL A     &hml LALT S      &hml LGUI D      &hml LSHIFT F    HRM_DQ_G                                            HRM_DQ_H         &hmr RSHIFT J    &hmr LGUI K      &hmr LALT L      &hmr LCTRL SEMI  &kp DE_SQT
+         &kp LCTRL        HRM_CTRL_A       HRM_ALT_S        HRM_GUI_D        HRM_SHIFT_F      HRM_DQ_G                                            HRM_DQ_H         HRM_SHIFT_J      HRM_GUI_K        HRM_ALT_L        HRM_CTRL_SEMI    &kp DE_SQT
     // ├────────────────┼────────────────┼────────────────┼────────────────┼────────────────┤────────────────┤────────────────┤├────────────────┼────────────────┼────────────────┼────────────────┼────────────────┤────────────────┤────────────────┤
          &kp LSHFT        &kp DE_Z         &kp DE_X         &kp DE_C         &kp DE_V         &kp DE_B         &kp DE_LBKT       &kp DE_RBKT      &kp DE_N         &kp DE_M         &kp DE_COMMA     &kp DE_DOT       &kp DE_FSLH      &kp RSHIFT
     // ├────────────────┼────────────────┼────────────────┼────────────────┼────────────────┤────────────────┤────────────────┤├────────────────┼────────────────┼────────────────┼────────────────┼────────────────┤────────────────┤────────────────┤
