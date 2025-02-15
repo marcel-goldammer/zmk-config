@@ -22,3 +22,20 @@ CUSTOM_MAPPING(cn7, &kp N7, &kp LS(N6)) // LSHIFT + N6 = &
 CUSTOM_MAPPING(cn8, &kp N8, &kp KP_STAR)
 CUSTOM_MAPPING(cn9, &kp N9, &kp LS(N8)) // LSHIFT + N8 = (
 CUSTOM_MAPPING(cn0, &kp N0, &kp LS(N9)) // LSHIFT + N9 = )
+
+// equal (=) and plus (+) keys
+CUSTOM_MAPPING(equal_plus, &kp DE_EQUAL, &kp DE_PLUS)
+// single quote (') and double quote (") keys
+CUSTOM_MAPPING(sqt_dqt, &kp DE_SQT, &kp DE_DQT)
+// comma (,) and less than (<) keys
+CUSTOM_MAPPING(comma_lt, &kp DE_COMMA, &kp DE_LT)
+// period (.) and greater than (>) keys
+CUSTOM_MAPPING(dot_gt, &kp DE_DOT, &kp DE_GT)
+// slash (/) and question mark (?) keys
+CUSTOM_MAPPING(slash_question, &kp DE_FSLH, &kp DE_QMARK)
+// semicolon (;) and colon (:) keys
+CUSTOM_MAPPING(semi_colon, &kp DE_SEMI, &kp DE_COLON)
+// left bracket ([) and left brace ({) keys
+CUSTOM_MAPPING(lbkt_brc, &kp DE_LBKT, &kp DE_LBRC)
+// right bracket (]) and right brace (}) keys
+CUSTOM_MAPPING(rbkt_brc, &kp DE_RBKT, &kp DE_RBRC)
