@@ -17,7 +17,7 @@ CUSTOM_MAPPING(cn2, &kp N2, &kp LA(L)) // LALT + L = @
 CUSTOM_MAPPING(cn3, &kp N3, &kp NON_US_HASH)
 CUSTOM_MAPPING(cn4, &kp N4, &kp DLLR)
 CUSTOM_MAPPING(cn5, &kp N5, &kp PRCNT)
-CUSTOM_MAPPING(cn6, &kp N6, &kp GRAVE)
+CUSTOM_MAPPING(cn6, &kp N6, &kp NON_US_BSLH)
 CUSTOM_MAPPING(cn7, &kp N7, &kp LS(N6)) // LSHIFT + N6 = &
 CUSTOM_MAPPING(cn8, &kp N8, &kp KP_STAR)
 CUSTOM_MAPPING(cn9, &kp N9, &kp LS(N8)) // LSHIFT + N8 = (
