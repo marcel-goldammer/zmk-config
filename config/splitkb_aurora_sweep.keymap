@@ -33,15 +33,15 @@ ZMK_HOLD_TAP(hmr,
 )
 
 // homerow keys
-#define HM_A    &hml LCTRL &kp DE_A
-#define HM_S    &hml LALT &kp DE_S
-#define HM_D    &hml LCMD &kp DE_D
-#define HM_F    &hml LSHIFT &kp DE_F
+#define HM_A    &hml LCTRL DE_A
+#define HM_S    &hml LALT DE_S
+#define HM_D    &hml LCMD DE_D
+#define HM_F    &hml LSHIFT DE_F
 
-#define HM_J    &hmr RSHIFT &kp DE_J
-#define HM_K    &hmr LCMD &kp DE_K
-#define HM_L    &hmr LALT &kp DE_L
-#define HM_SEMI &hmr LCTRL &kp DE_SEMI
+#define HM_J    &hmr RSHIFT DE_J
+#define HM_K    &hmr LCMD DE_K
+#define HM_L    &hmr LALT DE_L
+#define HM_SEMI &hmr LCTRL DE_SEMI
 
 // tap: backspace | shift + tap: delete
 ZMK_MOD_MORPH(bspc_del,
