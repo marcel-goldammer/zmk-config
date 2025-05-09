@@ -1,0 +1,66 @@
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+
+#include "zmk-helpers/helper.h"
+#include "zmk-helpers/key-labels/34.h"
+#include "zmk-helpers/unicode-chars/german.dtsi"
+#include "keys_de.h"
+
+#define ___ &trans
+
+// https://github.com/urob/zmk-config/tree/main#timeless-homerow-mods
+#define KEYS_L LT0 LT1 LT2 LT3 LT4 LM0 LM1 LM2 LM3 LM4 LB0 LB1 LB2 LB3 LB4
+#define KEYS_R RT0 RT1 RT2 RT3 RT4 RM0 RM1 RM2 RM3 RM4 RB0 RB1 RB2 RB3 RB4
+#define THUMBS LH1 LH0 RH0 RH1
+
+
+ZMK_HOLD_TAP(hml,
+    flavor = "balanced";
+    tapping-term-ms = <280>;
+    require-prior-idle-ms = <150>;
+    hold-trigger-key-positions = <KEYS_R THUMBS>;
+    hold-trigger-on-release;
+    bindings = <&kp>, <&kp>;
+)
+
+ZMK_HOLD_TAP(hmr,
+    flavor = "balanced";
+    tapping-term-ms = <280>;
+    require-prior-idle-ms = <150>;
+    hold-trigger-key-positions = <KEYS_L THUMBS>;
+    hold-trigger-on-release;
+    bindings = <&kp>, <&kp>;
+)
+
+// homerow keys
+#define HM_A    &hml LCTRL &kp DE_A
+#define HM_S    &hml LALT &kp DE_S
+#define HM_D    &hml LCMD &kp DE_D
+#define HM_F    &hml LSHIFT &kp DE_F
+
+#define HM_J    &hmr RSHIFT &kp DE_J
+#define HM_K    &hmr LCMD &kp DE_K
+#define HM_L    &hmr LALT &kp DE_L
+#define HM_SEMI &hmr LCTRL &kp DE_SEMI
+
+// tap: backspace | shift + tap: delete
+ZMK_MOD_MORPH(bspc_del,
+     bindings = <&kp BSPC>, <&kp DEL>;
+     mods = <(MOD_LSFT|MOD_RSFT)>;
+)
+
+#define QWERTZ      0
+#define SYN_NUM     1
+#define NAV         2
+
+ZMK_LAYER(QWERTZ,
+  // ╭────────────────┬────────────────┬────────────────┬────────────────┬────────────────╮╭────────────────┬────────────────┬────────────────┬────────────────┬────────────────╮
+       &kp DE_Q             &kp DE_W             &kp DE_E             &kp DE_R             &kp DE_T              &kp DE_Z             &kp DE_U             &kp DE_I         &kp DE_P             &kp DE_BSLH
+  // ├────────────────┼────────────────┼────────────────┤────────────────┤────────────────┤├────────────────┼────────────────┼────────────────┤────────────────┤────────────────┤
+       HM_A             HM_S             HM_D             HM_F             &kp DE_G              &kp DE_H             HM_J             HM_K         HM_L             HM_SEMI
+  // ├────────────────┼────────────────┼────────────────┤────────────────┤────────────────┤├────────────────┼────────────────┼────────────────┤────────────────┤────────────────┤
+       &kp DE_Q             &kp DE_W             &kp DE_E             &kp DE_R             &kp DE_T              &kp DE_Z             &kp DE_U             &kp DE_I         &kp DE_P             &kp DE_BSLH
+  // ├────────────────┼────────────────┼────────────────┤────────────────┤────────────────┤├────────────────┼────────────────┼────────────────┤────────────────┤────────────────┤
+                                                          &trans           &kp SPACE         &kp ENTER         &trans
+  //                                                    ╰────────────────┴────────────────╯╰────────────────┴────────────────╯
+)
