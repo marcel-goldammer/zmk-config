@@ -43,6 +43,51 @@ ZMK_HOLD_TAP(hmr,
 #define HM_L    &hmr LALT DE_L
 #define HM_SEMI &hmr LCTRL DE_SEMI
 
+// umlaut combos
+#define ADAPTIVE_IDLE 800
+ZMK_ADAPTIVE_KEY(
+    adap_e, bindings = <&kp DE_E>;
+    ae_umlaut {
+        trigger-keys = <A>;
+        bindings = <&kp DE_A_UMLAUT>;
+        max-prior-idle-ms = <ADAPTIVE_IDLE>;
+    };
+    oe_umlaut {
+        trigger-keys = <O>;
+        bindings = <&kp DE_O_UMLAUT>;
+        max-prior-idle-ms = <ADAPTIVE_IDLE>;
+    };
+    ue_umlaut {
+        trigger-keys = <U>;
+        bindings = <&kp DE_U_UMLAUT>;
+        max-prior-idle-ms = <ADAPTIVE_IDLE>;
+    };
+
+    ae_umlaut_upper {
+        trigger-keys = <LS(A)>;
+        bindings = <&kp LS(DE_A_UMLAUT)>;
+        max-prior-idle-ms = <ADAPTIVE_IDLE>;
+    };
+    oe_umlaut_upper {
+        trigger-keys = <LS(O)>;
+        bindings = <&kp LS(DE_O_UMLAUT)>;
+        max-prior-idle-ms = <ADAPTIVE_IDLE>;
+    };
+    ue_umlaut_upper {
+        trigger-keys = <LS(U)>;
+        bindings = <&kp LS(DE_U_UMLAUT)>;
+        max-prior-idle-ms = <ADAPTIVE_IDLE>;
+    };
+)
+ZMK_ADAPTIVE_KEY(
+    adap_z, bindings = <&kp DE_Z>;
+    eszett {
+        trigger-keys = <S>;
+        bindings = <&kp DE_ESZETT>;
+        max-prior-idle-ms = <ADAPTIVE_IDLE>;
+    };
+)
+
 // tap: backspace | shift + tap: delete
 ZMK_MOD_MORPH(bspc_del,
      bindings = <&kp BSPC>, <&kp DEL>;
@@ -50,17 +95,17 @@ ZMK_MOD_MORPH(bspc_del,
 )
 
 #define QWERTZ      0
-#define SYN_NUM     1
+#define SYM_NUM     1
 #define NAV         2
 
 ZMK_LAYER(QWERTZ,
   // ╭────────────────┬────────────────┬────────────────┬────────────────┬────────────────╮╭────────────────┬────────────────┬────────────────┬────────────────┬────────────────╮
-       &kp DE_Q         &kp DE_W         &kp DE_E         &kp DE_R         &kp DE_T          &kp DE_Z         &kp DE_U         &kp DE_I         &kp DE_P         &kp DE_BSLH
+       &kp DE_Q         &kp DE_W         &adap_e          &kp DE_R         &kp DE_T          &adap_z          &kp DE_U         &kp DE_I         &kp DE_P         &kp DE_BSLH
   // ├────────────────┼────────────────┼────────────────┤────────────────┤────────────────┤├────────────────┼────────────────┼────────────────┤────────────────┤────────────────┤
        HM_A             HM_S             HM_D             HM_F             &kp DE_G          &kp DE_H         HM_J             HM_K             HM_L             HM_SEMI
   // ├────────────────┼────────────────┼────────────────┤────────────────┤────────────────┤├────────────────┼────────────────┼────────────────┤────────────────┤────────────────┤
-       &kp DE_Y         &kp DE_X         &kp DE_C         &kp DE_V         &kp DE_B          &kp DE_N         &kp DE_M         &kp DE_KOMMA     &kp DE_DOT       &kp DE_FSLH
+       &kp DE_Y         &kp DE_X         &kp DE_C         &kp DE_V         &kp DE_B          &kp DE_N         &kp DE_M         &kp DE_COMMA     &kp DE_DOT       &kp DE_FSLH
   // ├────────────────┼────────────────┼────────────────┤────────────────┤────────────────┤├────────────────┼────────────────┼────────────────┤────────────────┤────────────────┤
-                                                          ___              &kp SPACE         &kp ENTER         ___
+                                                          &trans           &kp SPACE         &kp ENTER        &trans
   //                                                    ╰────────────────┴────────────────╯╰────────────────┴────────────────╯
 )
