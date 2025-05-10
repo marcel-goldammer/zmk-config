@@ -49,33 +49,33 @@ ZMK_ADAPTIVE_KEY(
     adap_e, bindings = <&kp DE_E>;
     ae_umlaut {
         trigger-keys = <A>;
-        bindings = <&kp DE_A_UMLAUT>;
+        bindings = <&kp BACKSPACE &kp DE_A_UMLAUT>;
         max-prior-idle-ms = <ADAPTIVE_IDLE>;
     };
     oe_umlaut {
         trigger-keys = <O>;
-        bindings = <&kp DE_O_UMLAUT>;
+        bindings = <&kp BACKSPACE &kp DE_O_UMLAUT>;
         max-prior-idle-ms = <ADAPTIVE_IDLE>;
     };
     ue_umlaut {
         trigger-keys = <U>;
-        bindings = <&kp DE_U_UMLAUT>;
+        bindings = <&kp BACKSPACE &kp DE_U_UMLAUT>;
         max-prior-idle-ms = <ADAPTIVE_IDLE>;
     };
 
     ae_umlaut_upper {
         trigger-keys = <LS(A)>;
-        bindings = <&kp LS(DE_A_UMLAUT)>;
+        bindings = <&kp BACKSPACE &kp LS(DE_A_UMLAUT)>;
         max-prior-idle-ms = <ADAPTIVE_IDLE>;
     };
     oe_umlaut_upper {
         trigger-keys = <LS(O)>;
-        bindings = <&kp LS(DE_O_UMLAUT)>;
+        bindings = <&kp BACKSPACE &kp LS(DE_O_UMLAUT)>;
         max-prior-idle-ms = <ADAPTIVE_IDLE>;
     };
     ue_umlaut_upper {
         trigger-keys = <LS(U)>;
-        bindings = <&kp LS(DE_U_UMLAUT)>;
+        bindings = <&kp BACKSPACE &kp LS(DE_U_UMLAUT)>;
         max-prior-idle-ms = <ADAPTIVE_IDLE>;
     };
 )
@@ -83,7 +83,7 @@ ZMK_ADAPTIVE_KEY(
     adap_z, bindings = <&kp DE_Z>;
     eszett {
         trigger-keys = <S>;
-        bindings = <&kp DE_ESZETT>;
+        bindings = <&kp BACKSPACE &kp DE_ESZETT>;
         max-prior-idle-ms = <ADAPTIVE_IDLE>;
     };
 )
