@@ -6,12 +6,23 @@
 #include "zmk-helpers/unicode-chars/german.dtsi"
 #include "keys_de.h"
 
+#define xxx &none
 #define ___ &trans
 
 // https://github.com/urob/zmk-config/tree/main#timeless-homerow-mods
 #define KEYS_L LT0 LT1 LT2 LT3 LT4 LM0 LM1 LM2 LM3 LM4 LB0 LB1 LB2 LB3 LB4
 #define KEYS_R RT0 RT1 RT2 RT3 RT4 RM0 RM1 RM2 RM3 RM4 RB0 RB1 RB2 RB3 RB4
 #define THUMBS LH1 LH0 RH0 RH1
+
+// define mod morph with single mod key
+#define SIMPLE_MORPH(NAME, MOD, BINDING1, BINDING2)     \
+    ZMK_MOD_MORPH(NAME,                                 \ 
+        mods = <(MOD_L##MOD, MOD_R##MOD)>;              \
+        bindings = <BINDING1>, <BINDING2>;              \
+    )
+
+// custom keys
+SIMPLE_MORPH(c_fslh, SFT, &kp DE_FSLH, &KP DE_QUESTION)
 
 
 ZMK_HOLD_TAP(hml,
@@ -33,15 +44,15 @@ ZMK_HOLD_TAP(hmr,
 )
 
 // homerow keys
-#define HM_A    &hml LCTRL DE_A
-#define HM_S    &hml LALT DE_S
-#define HM_D    &hml LCMD DE_D
-#define HM_F    &hml LSHIFT DE_F
+#define HM_A        &hml LCTRL DE_A
+#define HM_S        &hml LALT DE_S
+#define HM_D        &hml LCMD DE_D
+#define HM_F        &hml LSHIFT DE_F
 
-#define HM_J    &hmr RSHIFT DE_J
-#define HM_K    &hmr LCMD DE_K
-#define HM_L    &hmr LALT DE_L
-#define HM_SEMI &hmr LCTRL DE_SEMI
+#define HM_J        &hmr RSHIFT DE_J
+#define HM_K        &hmr LCMD DE_K
+#define HM_L        &hmr LALT DE_L
+#define HM_MINUS    &hmr LCTRL DE_MINUS
 
 // umlaut combos
 #define ADAPTIVE_IDLE 800
@@ -95,17 +106,48 @@ ZMK_MOD_MORPH(bspc_del,
 )
 
 #define QWERTZ      0
-#define SYM_NUM     1
-#define NAV         2
+#define SYMBOLS     1
+#define NUMBERS     2
+#define NAVIGATION  3
+#define SYSTEM      4
 
 ZMK_LAYER(QWERTZ,
   // ╭────────────────┬────────────────┬────────────────┬────────────────┬────────────────╮╭────────────────┬────────────────┬────────────────┬────────────────┬────────────────╮
-       &kp DE_Q         &kp DE_W         &adap_e          &kp DE_R         &kp DE_T          &adap_z          &kp DE_U         &kp DE_I         &kp DE_P         &kp DE_BSLH
+       &kp DE_Q         &kp DE_W         &adap_e          &kp DE_R         &kp DE_T          &adap_z          &kp DE_U         &kp DE_I         &kp DE_O         &kp DE_P
   // ├────────────────┼────────────────┼────────────────┤────────────────┤────────────────┤├────────────────┼────────────────┼────────────────┤────────────────┤────────────────┤
-       HM_A             HM_S             HM_D             HM_F             &kp DE_G          &kp DE_H         HM_J             HM_K             HM_L             HM_SEMI
+       HM_A             HM_S             HM_D             HM_F             &kp DE_G          &kp DE_H         HM_J             HM_K             HM_L             HM_MINUS
   // ├────────────────┼────────────────┼────────────────┤────────────────┤────────────────┤├────────────────┼────────────────┼────────────────┤────────────────┤────────────────┤
-       &kp DE_Y         &kp DE_X         &kp DE_C         &kp DE_V         &kp DE_B          &kp DE_N         &kp DE_M         &kp DE_COMMA     &kp DE_DOT       &kp DE_FSLH
+       &kp DE_Y         &kp DE_X         &kp DE_C         &kp DE_V         &kp DE_B          &kp DE_N         &kp DE_M         &kp DE_COMMA     &kp DE_DOT       &c_flsh
   // ├────────────────┼────────────────┼────────────────┤────────────────┤────────────────┤├────────────────┼────────────────┼────────────────┤────────────────┤────────────────┤
-                                                          &trans           &kp SPACE         &kp ENTER        &trans
+                                                          &lt SYMBOLS TAB  &kp SPACE         &kp ENTER        &bspc_del
+  //                                                    ╰────────────────┴────────────────╯╰────────────────┴────────────────╯
+)
+
+ZMK_MACRO(arr_fun, bindings = <&kp DE_EQUAL &kp DE_GT>)     // =>
+ZMK_MACRO(p_eq, bindings = <&kp DE_PLUS &kp DE_EQUAL>)      // +=
+ZMK_MACRO(q_eq, bindings = <&kp DE_QMARK &kp DE_EQUAL>)     // ?=
+ZMK_MACRO(p_p, bindings = <&kp DE_PLUS &kp DE_PLUS>)        // ++
+ZMK_MACRO(m_m, bindings = <&kp DE_MINUS &kp DE_MINUS>)      // --
+ZMK_LAYER(SYMBOLS,
+  // ╭────────────────┬────────────────┬────────────────┬────────────────┬────────────────╮╭────────────────┬────────────────┬────────────────┬────────────────┬────────────────╮
+       &kp DE_EXCL      &kp DE_PLUS      &kp DE_LBRC      &kp DE_RBRC      &kp DE_EQUAL      &kp DE_CARET     &kp DE_AT        &kp DE_STAR      &kp DE_PERCENT   &kp DE_DOLLAR
+  // ├────────────────┼────────────────┼────────────────┤────────────────┤────────────────┤├────────────────┼────────────────┼────────────────┤────────────────┤────────────────┤
+       &kp DE_LT        &kp DE_GT        &kp DE_LPAR      &kp DE_RPAR      &kp DE_PIPE       &kp DE_GRAVE     &kp DE_SQT       &kp DE_DQT       &arr_fun         &kp DE_EURO
+  // ├────────────────┼────────────────┼────────────────┤────────────────┤────────────────┤├────────────────┼────────────────┼────────────────┤────────────────┤────────────────┤
+       &kp DE_HASH      &kp DE_AMSP      &kp DE_LBKT      &kp DE_RBKT      &kp DE_BSLH       &kp DE_TILDE     &p_eq            &q_eq            &p_p             &m_m
+  // ├────────────────┼────────────────┼────────────────┤────────────────┤────────────────┤├────────────────┼────────────────┼────────────────┤────────────────┤────────────────┤
+                                                          xxx              xxx               xxx              xxx
+  //                                                    ╰────────────────┴────────────────╯╰────────────────┴────────────────╯
+)
+
+ZMK_LAYER(NUMBERS,
+  // ╭────────────────┬────────────────┬────────────────┬────────────────┬────────────────╮╭────────────────┬────────────────┬────────────────┬────────────────┬────────────────╮
+       xxx              xxx              xxx              xxx              xxx               xxx              xxx              xxx              xxx              xxx
+  // ├────────────────┼────────────────┼────────────────┤────────────────┤────────────────┤├────────────────┼────────────────┼────────────────┤────────────────┤────────────────┤
+       xxx              xxx              xxx              xxx              xxx               xxx              xxx              xxx              xxx              xxx
+  // ├────────────────┼────────────────┼────────────────┤────────────────┤────────────────┤├────────────────┼────────────────┼────────────────┤────────────────┤────────────────┤
+       xxx              xxx              xxx              xxx              xxx               xxx              xxx              xxx              xxx              xxx
+  // ├────────────────┼────────────────┼────────────────┤────────────────┤────────────────┤├────────────────┼────────────────┼────────────────┤────────────────┤────────────────┤
+                                                          xxx              xxx               xxx              xxx
   //                                                    ╰────────────────┴────────────────╯╰────────────────┴────────────────╯
 )
