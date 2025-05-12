@@ -113,8 +113,8 @@ ZMK_MOD_MORPH(bspc_del,
 #define LAYERS      5
 
 // permanent layer switch combos
-ZMK_COMBO(to_layers, &to LAYERS, LM0 RM5, QWERTZ SYM NUM NAV SYS) // use pinkies to go to layers selection layer
-ZMK_COMBO(to_quertz, &to QWERTZ, LM0 RM5, LAYERS) // use pinkies to go to default layer from the selection layer
+ZMK_COMBO(to_layers, &to LAYERS, LM0 RM4, QWERTZ SYM NUM NAV SYS) // use pinkies to go to layers selection layer
+ZMK_COMBO(to_quertz, &to QWERTZ, LM0 RM4, LAYERS) // use pinkies to go to default layer from the selection layer
 ZMK_CONDITIONAL_LAYER(sys, NAV SYM, SYS) // go to SYS layer when NAV and SYM are active
 
 ZMK_LAYER(QWERTZ,
