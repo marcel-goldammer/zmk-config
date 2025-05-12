@@ -105,6 +105,9 @@ ZMK_MOD_MORPH(bspc_del,
      mods = <(MOD_LSFT|MOD_RSFT)>;
 )
 
+ZMK_COMBO(esc, &kp ESC, LT1 LT2, QWERTZ)
+ZMK_COMBO(caps_word, &caps_word, RT2 RT3, QWERTZ)
+
 #define QWERTZ      0
 #define SYM         1
 #define NUM         2
@@ -114,7 +117,7 @@ ZMK_MOD_MORPH(bspc_del,
 
 // permanent layer switch combos
 ZMK_COMBO(to_layers, &to LAYERS, LM0 RM4, QWERTZ SYM NUM NAV SYS) // use pinkies to go to layers selection layer
-ZMK_COMBO(to_quertz, &to QWERTZ, LM0 RM4, LAYERS) // use pinkies to go to default layer from the selection layer
+ZMK_COMBO(to_qwertz, &to QWERTZ, LM0 RM4, LAYERS) // use pinkies to go to default layer from the selection layer
 ZMK_CONDITIONAL_LAYER(sys, NAV SYM, SYS) // go to SYS layer when NAV and SYM are active
 
 ZMK_LAYER(QWERTZ,
