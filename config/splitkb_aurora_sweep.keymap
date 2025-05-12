@@ -123,11 +123,11 @@ ZMK_LAYER(QWERTZ,
   //                                                    ╰────────────────┴────────────────╯╰────────────────┴────────────────╯
 )
 
-ZMK_MACRO(arr_fun, bindings = <&kp DE_EQUAL &kp DE_GT>)     // =>
-ZMK_MACRO(p_eq, bindings = <&kp DE_PLUS &kp DE_EQUAL>)      // +=
-ZMK_MACRO(q_eq, bindings = <&kp DE_QMARK &kp DE_EQUAL>)     // ?=
-ZMK_MACRO(p_p, bindings = <&kp DE_PLUS &kp DE_PLUS>)        // ++
-ZMK_MACRO(m_m, bindings = <&kp DE_MINUS &kp DE_MINUS>)      // --
+ZMK_MACRO(arr_fun, bindings = <&kp DE_EQUAL &kp DE_GT>;)     // =>
+ZMK_MACRO(p_eq, bindings = <&kp DE_PLUS &kp DE_EQUAL>;)      // +=
+ZMK_MACRO(q_eq, bindings = <&kp DE_QMARK &kp DE_EQUAL>;)     // ?=
+ZMK_MACRO(p_p, bindings = <&kp DE_PLUS &kp DE_PLUS>;)        // ++
+ZMK_MACRO(m_m, bindings = <&kp DE_MINUS &kp DE_MINUS>;)      // --
 ZMK_LAYER(SYM,
   // ╭────────────────┬────────────────┬────────────────┬────────────────┬────────────────╮╭────────────────┬────────────────┬────────────────┬────────────────┬────────────────╮
        &kp DE_EXCL      &kp DE_PLUS      &kp DE_LBRC      &kp DE_RBRC      &kp DE_EQUAL      &kp DE_CARET     &kp DE_AT        &kp DE_STAR      &kp DE_PERCENT   &kp DE_DOLLAR
